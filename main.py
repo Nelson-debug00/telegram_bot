@@ -22,4 +22,4 @@ def echo_all(message):
     else:
         bot.reply_to(message, "Usa el botón de abajo para consultar el precio.")
 
-bot.infinity_polling()
+# bot.infinity_polling()

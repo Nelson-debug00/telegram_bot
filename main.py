@@ -6,7 +6,7 @@ bot = telebot.TeleBot("8771699547:AAGn8zTo6cp4qgGRxYeLelLp-R7NHNUU18g", parse_mo
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
-    markup = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
+    markup = types.ReplyKeyboardMarkup(row_width=4, resize_keyboard=True)
 
     btn_dolar = types.KeyboardButton("💸 Ver Precio Dólar y Euro")
     markup.add(btn_dolar)

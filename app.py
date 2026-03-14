@@ -1,41 +1,26 @@
 from flask import Flask
 import os
 import threading
-import main
+import main # Importa main.py donde está la definición del bot
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
+    return "Bot de Telegram en ejecución (Servidor Flask Activo)"
 
-    import telebot
-    from telebot import types
-    from dolar_price import get_price
-
-    bot = telebot.TeleBot("8771699547:AAGn8zTo6cp4qgGRxYeLelLp-R7NHNUU18g", parse_mode=None)
-
-    @bot.message_handler(commands=['start', 'help'])
-    def send_welcome(message):
-        markup = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True)
-
-        btn_dolar = types.KeyboardButton("💸 Ver Precio Dólar y Euro")
-
-        markup.add(btn_dolar)
-
-        bot.reply_to(message, "Hola, ¿en qué puedo ayudarte?", reply_markup=markup)
-
-    @bot.message_handler(func=lambda message: True)
-    def echo_all(message):
-        if message.text == "💸 Ver Precio Dólar y Euro":
-            bot.reply_to(message, f"Precio actual USD/EUR tasa BCV: {get_price()}")
-        
-        else:
-            bot.reply_to(message, "Usa el botón de abajo para consultar el precio.")
-
-    bot.infinity_polling()
-    return "Bot de telegram en ejecución"
+def run_bot():
+    # Iniciamos el bot desde aquí usando el objeto definido en main.py
+    print("Iniciando polling del bot...")
+    main.bot.infinity_polling()
 
 if __name__ == "__main__":
-    bot_thread = threading.Thread(target=index)
+    # Iniciamos el bot en un hilo para que no bloquee a Flask
+    bot_thread = threading.Thread(target=run_bot)
+    bot_thread.setDaemon(True) # Se asegura que el hilo muera si Flask se detiene
     bot_thread.start()
-    app.run(host='0.0.0.0', port=os.getenv('PORT', 8080))
+    
+    # Iniciamos el servidor Flask
+    # Ajustamos el puerto a 8080 o el que Render asigne
+    port = int(os.getenv('PORT', 8080))
+    app.run(host='0.0.0.0', port=port)

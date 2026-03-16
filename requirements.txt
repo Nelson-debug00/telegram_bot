@@ -2,4 +2,7 @@ beautifulsoup4
 pyTelegramBotAPI
 gunicorn
 flask
-requests
+psycopg2-binary
+SQLAlchemy
+alembic
+python-dotenv

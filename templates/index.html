@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BCV API | Calculadora de Cambio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <div class="logo-icon"></div>
+        <span
+          >BCV API
+          <small
+            style="
+              font-size: 0.6rem;
+              vertical-align: middle;
+              color: var(--text-gray);
+            "
+            >V.1</small
+          ></span
+        >
+      </div>
+      <nav>
+        <a href="#">Calculadora</a>
+        <a href="#">Contacto</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <h1>Bienvenido a <br />BCV API</h1>
+        <p>
+          Consulta y convierte montos en dólares o euros usando tasas oficiales
+          del Banco Central de Venezuela. Esta herramienta está diseñada para
+          ofrecerte precisión, velocidad y confianza en cada cálculo.
+        </p>
+      </section>
+
+      <section class="calc-section">
+        <h2 class="calc-title">Calculadora de cambio</h2>
+
+        <div class="calc-card">
+          <div class="currency-toggle">
+            <button class="toggle-btn active" data-currency="dolar">
+              $ Dólar
+            </button>
+            <button class="toggle-btn" data-currency="euro">€ Euro</button>
+          </div>
+
+          <div class="input-group">
+            <div class="label"><span>💰</span> Monto en USD/EUR</div>
+            <input
+              type="number"
+              id="amount"
+              class="currency-input"
+              value="1"
+              step="0.01"
+            />
+          </div>
+
+          <div class="input-group">
+            <div class="label"><span>🔢</span> Total en Bs</div>
+            <div class="result-box">
+              <span id="result-value" class="result-value">Bs.S 446,80</span>
+            </div>
+          </div>
+
+          <div class="info-box">
+            <div class="info-row">
+              <span>📈</span>
+              <span id="current-rate-text">Tasa actual: USD 446,80</span>
+            </div>
+            <div class="info-row" style="font-size: 0.75rem">
+              <span>🕒</span> Lunes, 16 Marzo 2026
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

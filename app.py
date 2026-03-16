@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import os
 import threading
 import main
@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "Bot de Telegram en ejecución (Servidor Flask Activo)"
+    return render_template("index.html")
 
 def run_bot():
     try:

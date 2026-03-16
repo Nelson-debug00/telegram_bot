@@ -101,45 +101,26 @@ def callback_universal(call):
     elif call.data == "tasa_usdt_ant":
         bot.answer_callback_query(call.id)
         _, _, val_usdt, _, fecha_usdt_ant = get_last_price()
-        bot.send_message(call.message.chat.id, f"Tasa anterior:\n\n🪙 USDT: {val_usdt} Bs\n\nFecha: {fecha_usdt_ant}")
+        bot.send_message(call.message.chat.id, f"📈 Tasa anterior:\n\n🪙 USDT: {val_usdt} Bs\n\nFecha: {fecha_usdt_ant}")
 
 def menu_calculadora_tasa_actual():
     markup = types.InlineKeyboardMarkup(row_width=1)
-
-    btn_calc_bs = types.InlineKeyboardButton("📱 Calcular Bs a EUR/USD/USDT", callback_data="calc_bs_eur_usd_usdt")
-    markup.add(btn_calc_bs)
-
-    btn_calc_eur = types.InlineKeyboardButton("📱 Calcular EUR a Bs", callback_data="calc_eur_bs")
-    markup.add(btn_calc_eur)
-
-    btn_calc_usd = types.InlineKeyboardButton("📱 Calcular USD a Bs", callback_data="calc_usd_bs")
-    markup.add(btn_calc_usd)
-
-    btn_calc_usdt = types.InlineKeyboardButton("📱 Calcular USDT a Bs", callback_data="calc_usdt_bs")
-    markup.add(btn_calc_usdt)
+    markup.add(types.InlineKeyboardButton("📱 Calcular Bs a EUR/USD/USDT", callback_data="calc_bs_eur_usd_usdt"))
+    markup.add(types.InlineKeyboardButton("📱 Calcular EUR a Bs", callback_data="calc_eur_bs"))
+    markup.add(types.InlineKeyboardButton("📱 Calcular USD a Bs", callback_data="calc_usd_bs"))
+    markup.add(types.InlineKeyboardButton("📱 Calcular USDT a Bs", callback_data="calc_usdt_bs"))
     return markup
 
 def menu_calculadora_tasa_anterior():
     markup = types.InlineKeyboardMarkup(row_width=1)
-
-    btn_calc_bs_eur_usd_usdt_ant = types.InlineKeyboardButton("📱 Calcular Bs a EUR/USD/USDT", callback_data="calc_bs_eur_usd_usdt_ant")
-    markup.add(btn_calc_bs_eur_usd_usdt_ant)
-
-    btn_calc_eur_bs_ant = types.InlineKeyboardButton("📱 Calcular EUR a Bs", callback_data="calc_eur_bs_ant")
-    markup.add(btn_calc_eur_bs_ant)
-
-    btn_calc_usd_bs_ant = types.InlineKeyboardButton("📱 Calcular USD a Bs", callback_data="calc_usd_bs_ant")
-    markup.add(btn_calc_usd_bs_ant)
-
-    btn_calc_usdt_bs_ant = types.InlineKeyboardButton("📱 Calcular USDT a Bs", callback_data="calc_usdt_bs_ant")
-    markup.add(btn_calc_usdt_bs_ant)
-
+    markup.add(types.InlineKeyboardButton("📱 Calcular Bs a EUR/USD/USDT", callback_data="calc_bs_eur_usd_usdt_ant"))
+    markup.add(types.InlineKeyboardButton("📱 Calcular EUR a Bs", callback_data="calc_eur_bs_ant"))
+    markup.add(types.InlineKeyboardButton("📱 Calcular USD a Bs", callback_data="calc_usd_bs_ant"))
+    markup.add(types.InlineKeyboardButton("📱 Calcular USDT a Bs", callback_data="calc_usdt_bs_ant"))
     return markup
 
 def menu_tasa_anterior():
     markup = types.InlineKeyboardMarkup(row_width=1)
-    btn_tasa_dolar_euro_ant = types.InlineKeyboardButton("💸 Ver tasa anterior USD/EUR", callback_data="tasa_dolar_euro_ant")
-    markup.add(btn_tasa_dolar_euro_ant)
-    btn_tasa_usdt_ant = types.InlineKeyboardButton("💸 Ver tasa anterior USDT", callback_data="tasa_usdt_ant")
-    markup.add(btn_tasa_usdt_ant)
+    markup.add(types.InlineKeyboardButton("💸 Ver tasa anterior USD/EUR", callback_data="tasa_dolar_euro_ant"))
+    markup.add(types.InlineKeyboardButton("💸 Ver tasa anterior USDT", callback_data="tasa_usdt_ant"))
     return markup

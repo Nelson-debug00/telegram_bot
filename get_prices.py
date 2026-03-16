@@ -5,7 +5,6 @@ from sqlalchemy import func
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 import urllib3
-import pytz
 
 # Configuración de caché global
 cache_precios = None
@@ -25,9 +24,9 @@ def get_dolar_prices():
     # Inicialización de seguridad para evitar UnboundLocalError
     dolar, euro, usdt = 0.0, 0.0, 0.0
     fecha_bcv_str = "Fecha no disponible"
-    fecha_bcv_db = datetime.now().strftime("%d-%m-%Y")
+    fecha_bcv_db = datetime.now().strftime("%Y-%m-%d")
     fecha_usdt_str = "Fecha no disponible"
-    fecha_usdt_db = datetime.now().strftime("%d-%m-%Y")
+    fecha_usdt_db = datetime.now().strftime("%Y-%m-%d")
 
     try:
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)

@@ -29,12 +29,17 @@
             ">VE</small></span>
       </a>
     </div>
-    <nav>
+    <nav id="nav-menu">
       <a href="{{ url_for('index') }}">Inicio</a>
       <a href="{{ url_for('contacto') }}">Contacto</a>
       <a href="#">Graficos</a>
       <a href="#">Tasas Anteriores</a>
     </nav>
+    <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </header>
 
   <main>
@@ -94,6 +99,7 @@
     };
   </script>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
 </body>
 
 </html>

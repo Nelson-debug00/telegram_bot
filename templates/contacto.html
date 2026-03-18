@@ -22,29 +22,34 @@
             ">VE</small></span>
       </a>
     </div>
-    <nav>
+    <nav id="nav-menu">
       <a href="{{ url_for('index') }}">Inicio</a>
       <a href="{{ url_for('contacto') }}">Contacto</a>
       <a href="#">Graficos</a>
       <a href="#">Tasas Anteriores</a>
     </nav>
+    <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </header>
 
   <main>
-    <div class="contact-grid">
-      <!-- Columna Izquierda: Telegram -->
-      <section class="left-col">
-        <div class="calc-card telegram-card">
-          <div class="card-header">
-            <svg class="icon-large" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-            <div class="header-text">
+    <div class="contact-container">
+      <!-- Centered Telegram Card -->
+      <section class="main-contact">
+        <div class="calc-card telegram-card-large">
+          <div class="card-header centered">
+            <img src="{{ url_for('static', filename='img/imgbot.jpg') }}" alt="Bot Logo" class="bot-logo-img">
+            <div class="header-text-large">
                 <h2>Telegram</h2>
-                <p>Respuesta inmediata</p>
+                <p>@DolarActual_bot</p>
             </div>
           </div>
-          <div class="card-body">
-            <p>Contáctanos directamente por Telegram para una respuesta rápida y personalizada.</p>
-            <a href="https://t.me/TuUsername" target="_blank" class="action-btn telegram-btn">
+          <div class="card-body centered">
+            <p class="description-text">Este bot automatizado te permite consultar en tiempo real las tasas actualizadas de divisas como el Dólar, Euro y USDT frente al Bolívar (A tasa BCV), incluyendo una calculadora integrada para realizar conversiones rápidas de cualquier monto con los indicadores del mercado actual.</p>
+            <a href="https://t.me/DolarActual_bot" target="_blank" class="action-btn-large telegram-btn-highlight">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
               Abrir Telegram
             </a>
@@ -52,52 +57,9 @@
         </div>
       </section>
 
-      <!-- Columna Derecha: Formulario e Info -->
-      <section class="right-col">
-        <div class="form-card">
-          <div class="card-header">
-            <svg class="icon-medium" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-            <h2>Envíanos un mensaje</h2>
-          </div>
-          <form class="contact-form">
-            <div class="input-group">
-              <label>Nombre completo *</label>
-              <div class="input-wrapper">
-                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                <input type="text" placeholder="Tu nombre" required>
-              </div>
-            </div>
-            <div class="input-group">
-              <label>Correo electrónico *</label>
-              <div class="input-wrapper">
-                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                <input type="email" placeholder="tu@email.com" required>
-              </div>
-            </div>
-            <div class="input-group">
-              <label>Asunto *</label>
-              <div class="input-wrapper">
-                <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.5 7.5 5 5 5-5"/><path d="m15.5 16.5 5-5 5 5"/><path d="M2 12h13"/></svg>
-                <select required>
-                  <option value="" disabled selected>Selecciona un asunto</option>
-                  <option value="soporte">Soporte Técnico</option>
-                  <option value="ventas">Ventas / Publicidad</option>
-                  <option value="otro">Otro</option>
-                </select>
-              </div>
-            </div>
-            <div class="input-group">
-              <label>Mensaje *</label>
-              <textarea placeholder="Escribe tu mensaje aquí..." rows="4" required></textarea>
-            </div>
-            <button type="submit" class="submit-btn highlight-btn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-              Enviar Mensaje
-            </button>
-          </form>
-        </div>
-
-        <div class="info-cards">
+      <!-- Smaller Info Row -->
+      <section class="secondary-info">
+        <div class="info-row-grid">
           <div class="small-info-card">
             <div class="card-icon blue">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -105,7 +67,7 @@
             <div class="card-info">
               <h3>Correo Electrónico</h3>
               <p>Soporte por email</p>
-              <a href="mailto:soporte@bcvapi.tech" class="outline-link">soporte@bcvapi.tech</a>
+              <a href="mailto:dolaractualve@gmail.com" class="outline-link">dolaractualve@gmail.com</a>
             </div>
           </div>
 
@@ -114,12 +76,12 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
             <div class="card-info">
-              <h3>Horario de Atención</h3>
-              <p>Zona horaria VET</p>
+              <h3>Horario de Atención por Correo</h3>
+              <p>Zona horaria Venezuela</p>
               <ul class="schedule-list">
-                <li><span class="check">✓</span> <strong>Lunes a Viernes:</strong> 9:00 AM - 6:00 PM</li>
-                <li><span class="check">✓</span> <strong>Sábados:</strong> 10:00 AM - 2:00 PM</li>
-                <li><span class="cross">×</span> <strong>Domingos:</strong> Cerrado</li>
+                <li><span class="check">✓</span> <strong>Lunes a Viernes:</strong>ㅤ9:00 AM - 6:00 PM</li>
+                <li><span class="check">✓</span> <strong>Sábados:</strong>ㅤ10:00 AM - 2:00 PM</li>
+                <li><span class="cross">×</span> <strong>Domingos:</strong>ㅤCerrado</li>
               </ul>
             </div>
           </div>
@@ -127,5 +89,6 @@
       </section>
     </div>
   </main>
+  <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
 </body>
 </html>

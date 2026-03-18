@@ -15,7 +15,8 @@
 }
 
 body {
-  background-color: var(--bg-dark);
+  background: linear-gradient(135deg, hsl(230, 70%, 30%) 0%, #000000 100%);
+  background-attachment: fixed;
   color: var(--text-white);
   font-family: var(--font-main);
   line-height: 1.6;
@@ -47,11 +48,25 @@ header {
 .logo-icon {
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, var(--text-white) 0%, #888 100%);
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z'/%3E%3C/svg%3E")
-    no-repeat center;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z'/%3E%3C/svg%3E")
-    no-repeat center;
+  /* mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z'/%3E%3C/svg%3E") no-repeat center;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z'/%3E%3C/svg%3E") no-repeat center; */
+}
+
+.logo-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  text-decoration: none;
 }
 
 nav {
@@ -98,8 +113,9 @@ main {
 
 .hero-section p {
   color: var(--text-gray);
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   max-width: 500px;
+  text-align: justify;
 }
 
 /* Calculator Section */
@@ -114,24 +130,26 @@ main {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 30px;
-  text-align: right;
+  text-align: center;
   width: 100%;
 }
 
 .calc-card {
-  background: var(--card-bg);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
+  border-radius: 24px;
   padding: 40px;
   width: 100%;
-  max-width: 450px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  max-width: 600px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
 }
 
 .currency-toggle {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: #232a31;
+  grid-template-columns: 1fr 1fr 1fr;
+  background: rgba(11, 15, 19, 0.8);
   border-radius: 12px;
   padding: 4px;
   margin-bottom: 30px;
@@ -153,9 +171,12 @@ main {
 }
 
 .toggle-btn.active {
-  background: var(--input-bg);
-  color: var(--accent-teal);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: white;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .toggle-btn.active::after {
@@ -163,7 +184,7 @@ main {
   display: block;
   width: 40px;
   height: 3px;
-  background: var(--accent-teal);
+  background: white;
   position: absolute;
   bottom: 5px;
   border-radius: 2px;
@@ -189,7 +210,7 @@ main {
 
 .currency-input {
   width: 100%;
-  background: var(--input-bg);
+  background: rgba(11, 15, 19, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   padding: 20px;
@@ -202,12 +223,12 @@ main {
 }
 
 .currency-input:focus {
-  border-color: var(--accent-teal);
+  border-color: white;
 }
 
 .result-box {
-  background: #1e3a3a;
-  border: 1px solid var(--accent-teal);
+  background: rgba(11, 15, 19, 0.8);
+  border: 1px solid white;
   border-radius: 12px;
   padding: 20px;
   text-align: center;
@@ -215,13 +236,17 @@ main {
 }
 
 .result-value {
-  color: var(--accent-teal);
+  color: white;
   font-size: 1.8rem;
   font-weight: 700;
 }
 
 .info-box {
-  background: #232a31;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 20px;
   display: flex;

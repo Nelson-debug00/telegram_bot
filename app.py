@@ -1,7 +1,7 @@
 from flask import Flask, render_template, jsonify
 import os
 import threading
-import main
+import logica_bot
 from get_prices import get_dolar_prices
 
 app = Flask(__name__)

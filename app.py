@@ -1,13 +1,26 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import os
 import threading
 import main
+from get_prices import get_dolar_prices
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    dolar, euro, usdt, fecha_bcv, fecha_usdt = get_dolar_prices()
+    return render_template("index.html", dolar=dolar, euro=euro, usdt=usdt, fecha_bcv=fecha_bcv, fecha_usdt=fecha_usdt)
+
+@app.route('/api/rates')
+def api_rates():
+    dolar, euro, usdt, fecha_bcv, fecha_usdt = get_dolar_prices()
+    return jsonify({
+        'dolar': dolar,
+        'euro': euro,
+        'usdt': usdt,
+        'fecha_bcv': fecha_bcv,
+        'fecha_usdt': fecha_usdt
+    })
 
 def run_bot():
     try:

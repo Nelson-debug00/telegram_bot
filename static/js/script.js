@@ -3,88 +3,60 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultValue = document.getElementById('result-value');
     const toggleButtons = document.querySelectorAll('.toggle-btn');
     const currentRateText = document.getElementById('current-rate-text');
+    const currentDateText = document.getElementById('current-date-text');
 
-    // Tasas de ejemplo (se pueden conectar al backend luego)
-    let rates = {
-        'dolar': 446.80,
-        'euro': 468.20,
-        'usdt': 452.50
+    const initialRates = window.INITIAL_RATES || {};
+    const rates = {
+        dolar: Number(initialRates.dolar) || 0,
+        euro: Number(initialRates.euro) || 0,
+        usdt: Number(initialRates.usdt) || 0,
+    };
+
+    const dates = {
+        dolar: initialRates.fecha_bcv || '',
+        euro: initialRates.fecha_bcv || '',
+        usdt: initialRates.fecha_usdt || '',
     };
 
     let currentCurrency = 'dolar';
+    const currencySymbols = {
+        dolar: 'USD',
+        euro: 'EUR',
+        usdt: 'USDT',
+    };
+
+    function formatAmount(value) {
+        return value.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function setCurrentRateText() {
+        const symbol = currencySymbols[currentCurrency] || currentCurrency.toUpperCase();
+        const rate = rates[currentCurrency] || 0;
+        currentRateText.textContent = `Tasa actual: ${symbol} ${formatAmount(rate)}`;
+        if (currentDateText) {
+            currentDateText.textContent = dates[currentCurrency] || '';
+        }
+    }
 
     function calculate() {
         const amount = parseFloat(amountInput.value) || 0;
-        const rate = rates[currentCurrency];
+        const rate = rates[currentCurrency] || 0;
         const result = amount * rate;
-
-        resultValue.textContent = `Bs.S ${result.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        resultValue.textContent = `Bs.S ${formatAmount(result)}`;
     }
 
     amountInput.addEventListener('input', calculate);
 
     toggleButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            // UI Update
             toggleButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-
-            // Logic Update
             currentCurrency = btn.dataset.currency;
-            let symbol;
-            if (currentCurrency === 'dolar') symbol = 'USD';
-            else if (currentCurrency === 'euro') symbol = 'EUR';
-            else symbol = 'USDT';
-            
-            currentRateText.textContent = `Tasa actual: ${symbol} ${rates[currentCurrency].toLocaleString('es-VE', { minimumFractionDigits: 2 })}`;
-
+            setCurrentRateText();
             calculate();
         });
     });
 
-    // Iniciar con cálculo base
-    calculate();
-});
-
-document - addEventListener('DOMContentLoaded', () => {
-    const amountInput = document.getElementById('amount');
-    const resultValue = document.getElementById('result-value');
-    const toggleButtons = document.querySelectorAll('.toggle-btn');
-    const currentRateText = document.getElementById('current-rate-text');
-
-    // Tasas de ejemplo (se pueden conectar al backend luego)
-    let rates = {
-        'dolar': 446.80,
-        'euro': 468.20
-    };
-
-    let currentCurrency = 'dolar';
-
-    function calculate() {
-        const amount = parseFloat(amountInput.value) || 0;
-        const rate = rates[currentCurrency];
-        const result = amount * rate;
-
-        resultValue.textContent = `Bs.S ${result.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-    }
-
-    amountInput.addEventListener('input', calculate);
-
-    toggleButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // UI Update
-            toggleButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            // Logic Update
-            currentCurrency = btn.dataset.currency;
-            const symbol = currentCurrency === 'dolar' ? 'USD' : 'EUR';
-            currentRateText.textContent = `Tasa actual: ${symbol} ${rates[currentCurrency].toLocaleString('es-VE', { minimumFractionDigits: 2 })}`;
-
-            calculate();
-        });
-    });
-
-    // Iniciar con cálculo base
+    setCurrentRateText();
     calculate();
 });

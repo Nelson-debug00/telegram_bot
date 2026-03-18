@@ -73,10 +73,10 @@
         <div class="info-box">
           <div class="info-row">
             <span>📈</span>
-            <span id="current-rate-text">Tasa actual: USD 446,80</span>
+            <span id="current-rate-text">Tasa actual: {{ dolar }}</span>
           </div>
           <div class="info-row" style="font-size: 0.75rem">
-            <span>🕒</span> Lunes, 16 Marzo 2026
+            <span>🕒</span> <span id="current-date-text">{{ fecha_bcv }}</span>
           </div>
         </div>
       </div>
@@ -84,7 +84,16 @@
   </main>
 
   <!-- JS -->
+  <script>
+    window.INITIAL_RATES = {
+      dolar: {{ dolar }},
+      euro: {{ euro }},
+      usdt: {{ usdt }},
+      fecha_bcv: "{{ fecha_bcv }}",
+      fecha_usdt: "{{ fecha_usdt }}"
+    };
+  </script>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 
-</html>
+</html>   

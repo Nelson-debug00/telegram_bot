@@ -29,7 +29,7 @@ def api_rates():
 def run_bot():
     try:
         print("Iniciando polling del bot...")
-        main.bot.infinity_polling()
+        logica_bot.bot.infinity_polling()
     except Exception as e:
         print(f"ERROR CRÍTICO EN EL BOT: {e}")
 

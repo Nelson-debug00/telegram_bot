@@ -31,7 +31,7 @@
     </div>
     <nav>
       <a href="{{ url_for('index') }}">Inicio</a>
-      <a href="#">Contacto</a>
+      <a href="{{ url_for('contacto') }}">Contacto</a>
       <a href="#">Graficos</a>
       <a href="#">Tasas Anteriores</a>
     </nav>
@@ -87,13 +87,13 @@
   <script>
     window.INITIAL_RATES = {
       dolar: {{ dolar }},
-      euro: {{ euro }},
-      usdt: {{ usdt }},
-      fecha_bcv: "{{ fecha_bcv }}",
+    euro: { { euro } },
+    usdt: { { usdt } },
+    fecha_bcv: "{{ fecha_bcv }}",
       fecha_usdt: "{{ fecha_usdt }}"
     };
   </script>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 
-</html>   
+</html>

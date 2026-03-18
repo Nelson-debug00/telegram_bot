@@ -29,6 +29,17 @@ document.addEventListener('DOMContentLoaded', () => {
         return value.toLocaleString('es-VE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
+    function formatInput(value) {
+        // Remove everything except digits
+        let digits = value.replace(/\D/g, '');
+        if (digits === '') return '';
+        
+        // Convert to number (assume cents if we wanted decimals, but here we just follow "every 3 zeros")
+        // The user specifically asked for "every 3 zeros a decimal" (meaning dots for thousands)
+        let num = parseInt(digits, 10);
+        return num.toLocaleString('es-VE');
+    }
+
     function setCurrentRateText() {
         const symbol = currencySymbols[currentCurrency] || currentCurrency.toUpperCase();
         const rate = rates[currentCurrency] || 0;
@@ -39,13 +50,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function calculate() {
-        const amount = parseFloat(amountInput.value) || 0;
+        // Remove dots (thousand separators) to parse correctly
+        const rawValue = amountInput.value.replace(/\./g, '').replace(/,/g, '.');
+        const amount = parseFloat(rawValue) || 0;
         const rate = rates[currentCurrency] || 0;
         const result = amount * rate;
         resultValue.textContent = `Bs.S ${formatAmount(result)}`;
     }
 
-    amountInput.addEventListener('input', calculate);
+    amountInput.addEventListener('input', (e) => {
+        const cursorPosition = e.target.selectionStart;
+        const prevLength = e.target.value.length;
+        
+        const formatted = formatInput(e.target.value);
+        e.target.value = formatted;
+        
+        // Adjust cursor position
+        const newLength = formatted.length;
+        const selectionPos = cursorPosition + (newLength - prevLength);
+        e.target.setSelectionRange(selectionPos, selectionPos);
+        
+        calculate();
+    });
 
     toggleButtons.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -57,6 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Initial formatting for the default value
+    amountInput.value = formatInput(amountInput.value);
     setCurrentRateText();
     calculate();
 });

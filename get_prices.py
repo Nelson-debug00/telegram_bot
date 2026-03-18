@@ -34,9 +34,13 @@ def get_dolar_prices():
         url = "https://www.bcv.org.ve/"
         page = requests.get(url, verify=False)
         content = BeautifulSoup(page.content, "html.parser")
+        prices = content.find_all("div", class_="col-sm-6 col-xs-6 centrado")
         date = content.find("span", class_="date-display-single")
         
-        if date:
+        if date and prices:
+            euro = float(prices[0].text.strip().replace(",", "."))
+            dolar = float(prices[4].text.strip().replace(",", "."))
+
             fecha_bcv_str = date.text.strip()
             parts = fecha_bcv_str.replace(",", "").split()
             if len(parts) >= 4:
@@ -53,23 +57,7 @@ def get_dolar_prices():
                 fecha_bcv_db = f"{anio}-{mes_num}-{dia}"
 
     except Exception as e:
-        print(f"Error al obtener la fecha BCV: {e}")
-
-    # Obtener Dolar y Euro (API)
-    try:
-        response = requests.get("https://ve.dolarapi.com/v1/cotizaciones")
-
-        # Dolar y Euro
-        if response.status_code == 200:  # Código 200 significa éxito
-            data = response.json() 
-
-            for price in data:
-                if price["nombre"] == "Dólar":
-                    dolar = price["promedio"]
-                elif price["nombre"] == "Euro":
-                    euro = price["promedio"]
-    except Exception as e:
-        print(f"Error BCV API: {e}")
+        print(f"Error al obtener precios BCV: {e}")
 
     # Obtener USDT (API)
     try:

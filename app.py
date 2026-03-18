@@ -1,5 +1,4 @@
 from flask import Flask, render_template, jsonify
-import os
 import threading
 import logica_bot
 from get_prices import get_dolar_prices

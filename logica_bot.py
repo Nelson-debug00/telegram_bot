@@ -95,13 +95,13 @@ def callback_universal(call):
     # --- Ver Tasa Anterior (Precios) ---
     elif call.data == "tasa_dolar_euro_ant":
         bot.answer_callback_query(call.id)
-        val_dolar, val_euro, _, fecha_bcv_ant, _ = get_last_price()
-        bot.send_message(call.message.chat.id, f"📈 Tasa anterior:\n\n💵 EUR: {val_euro} Bs\n💶 USD: {val_dolar} Bs\n\nFecha: {fecha_bcv_ant}")
+        dolar_ant, euro_ant, _, fecha_bcv_ant, _ = get_last_price()
+        bot.send_message(call.message.chat.id, f"📈 Tasa anterior:\n\n💵 EUR: {euro_ant} Bs\n💶 USD: {dolar_ant} Bs\n\nFecha: {fecha_bcv_ant}")
 
     elif call.data == "tasa_usdt_ant":
         bot.answer_callback_query(call.id)
-        _, _, val_usdt, _, fecha_usdt_ant = get_last_price()
-        bot.send_message(call.message.chat.id, f"Tasa anterior:\n\n🪙 USDT: {val_usdt} Bs\n\nFecha: {fecha_usdt_ant}")
+        _, _, usdt_ant, _, fecha_usdt_ant = get_last_price()
+        bot.send_message(call.message.chat.id, f"Tasa anterior:\n\n🪙 USDT: {usdt_ant} Bs\n\nFecha: {fecha_usdt_ant}")
 
 def menu_calculadora_tasa_actual():
     markup = types.InlineKeyboardMarkup(row_width=1)

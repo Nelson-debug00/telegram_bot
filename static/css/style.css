@@ -57,8 +57,6 @@ header {
 .logo-icon {
   width: 40px;
   height: 40px;
-  /* mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z'/%3E%3C/svg%3E") no-repeat center;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z'/%3E%3C/svg%3E") no-repeat center; */
 }
 
 .logo-icon img {
@@ -200,7 +198,7 @@ main {
 
 .hero-section p {
   color: var(--text-gray);
-  font-size: 1.0rem;
+  font-size: 1rem;
   max-width: 500px;
   text-align: justify;
 }
@@ -293,8 +291,7 @@ main {
 }
 
 .label {
-  display: flex;
-  align-items: center;
+  display: inline-block;
   gap: 8px;
   color: var(--text-gray);
   font-size: 0.9rem;
@@ -318,6 +315,46 @@ main {
 
 .currency-input:focus {
   border-color: white;
+}
+
+.switch-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: -5px 0 -10px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.switch-btn {
+  background: hsl(230, 98%, 18%);
+  border: 1px solid rgba(255, 255, 255, 0.356);
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.switch-btn:hover {
+  transform: scale(1.1);
+  background: white;
+  color: var(--bg-dark);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.switch-btn:active {
+  transform: scale(0.95);
+}
+
+.switch-btn svg {
+  width: 20px;
+  height: 20px;
 }
 
 .result-box {
@@ -346,10 +383,45 @@ main {
   border-radius: 12px;
   padding: 20px;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 20px;
   font-size: 0.85rem;
   color: var(--text-gray);
+}
+
+.toggle-rate-btn {
+  background: hsl(230, 98%, 18%);
+  border: 1px solid rgba(255, 255, 255, 0.356);
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.toggle-rate-btn:hover {
+  background: white;
+  color: var(--bg-dark);
+  transform: scale(1.1);
+}
+
+.toggle-rate-btn.active {
+  background: var(--accent-teal);
+  color: var(--bg-dark);
+  border-color: var(--accent-teal);
+  transform: rotate(180deg);
+}
+
+.info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
 }
 
 .info-row {

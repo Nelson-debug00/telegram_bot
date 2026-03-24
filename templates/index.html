@@ -1,105 +1,175 @@
 <!doctype html>
 <html lang="es">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dolar Actual VE</title>
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dolar Actual VE</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <!-- CSS -->
+    <!-- CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
   <link rel="icon" href="{{ url_for('static', filename='img/unnamed.png') }}">
-</head>
+  </head>
 
-<body>
-  <header>
-    <div class="logo">
-      <div class="logo-icon">
+  <body>
+    <header>
+      <div class="logo">
+        <div class="logo-icon">
         <img src="{{ url_for('static', filename='img/unnamed.png') }}" alt="Logo" />
+        </div>
+        <a href="{{ url_for('index') }}">
+          <span class="logo-text"
+            >Dolar Actual
+            <small
+              style="
+                font-size: 0.6rem;
+                vertical-align: middle;
+                color: var(--text-gray);
+              "
+              >VE</small
+            ></span
+          >
+        </a>
       </div>
-      <a href="{{ url_for('index') }}">
-        <span class="logo-text">Dolar Actual
-          <small style="
-              font-size: 0.6rem;
-              vertical-align: middle;
-              color: var(--text-gray);
-            ">VE</small></span>
-      </a>
-    </div>
-    <nav id="nav-menu">
-      <a href="{{ url_for('index') }}">Inicio</a>
-      <a href="{{ url_for('contacto') }}">Contacto</a>
-      <a href="#">Graficos</a>
-      <a href="#">Tasas Anteriores</a>
-    </nav>
-    <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-  </header>
+      <nav id="nav-menu">
+        <a href="{{ url_for('index') }}">Inicio</a>
+        <a href="{{ url_for('contacto') }}">Contacto</a>
+        <a href="#">Graficos</a>
+        <a href="#">Tasas Anteriores</a>
+      </nav>
+      <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </header>
 
-  <main>
-    <section class="hero-section">
-      <h1>Bienvenido a <br />Dolar Actual</h1>
-      <p>
-        Dolar Actual es la herramienta definitiva para consultar y convertir montos en divisas usando tasas oficiales
-        del Banco Central de Venezuela. Nuestra plataforma ofrece un servicio integral de monitoreo y conversión que
-        abarca las principales monedas de curso internacional Dólar, Euro y el activo digital más utilizado en el país
-        USDT, todo referenciado al Bolívar.
-      </p>
-    </section>
+    <main>
+      <section class="hero-section">
+        <h1>Bienvenido a <br />Dolar Actual</h1>
+        <p>
+          Dolar Actual es la herramienta definitiva para consultar y convertir
+          montos en divisas usando tasas oficiales del Banco Central de
+          Venezuela. Nuestra plataforma ofrece un servicio integral de monitoreo
+          y conversión que abarca las principales monedas de curso internacional
+          Dólar, Euro y el activo digital más utilizado en el país USDT, todo
+          referenciado al Bolívar.
+        </p>
+      </section>
 
-    <section class="calc-section">
-      <h2 class="calc-title">Calculadora de cambio</h2>
+      <section class="calc-section">
+        <h2 class="calc-title">Calculadora de cambio</h2>
 
-      <div class="calc-card">
-        <div class="currency-toggle">
-          <button class="toggle-btn active" data-currency="dolar">$ Dólar</button>
-          <button class="toggle-btn" data-currency="euro">€ Euro</button>
-          <button class="toggle-btn" data-currency="usdt">₮ USDT</button>
-        </div>
+        <div class="calc-card">
+          <div class="currency-toggle">
+            <button class="toggle-btn active" data-currency="dolar">
+              $ Dólar
+            </button>
+            <button class="toggle-btn" data-currency="euro">€ Euro</button>
+            <button class="toggle-btn" data-currency="usdt">₮ USDT</button>
+          </div>
 
-        <div class="input-group">
-          <div class="label"><span>💰</span> Monto en USD/EUR</div>
-          <input type="text" id="amount" class="currency-input" value="1" inputmode="decimal" />
-        </div>
+          <div class="input-group">
+            <div class="label">
+              <span id="input-icon">💰</span>
+              <span id="input-label">Monto en USD/EUR</span>
+            </div>
+            <input
+              type="text"
+              id="amount"
+              class="currency-input"
+              value="1"
+              inputmode="decimal"
+            />
+          </div>
 
-        <div class="input-group">
-          <div class="label"><span>🔢</span> Total en Bs</div>
-          <div class="result-box">
-            <span id="result-value" class="result-value">Bs.S 446,80</span>
+          <div class="switch-container">
+            <button
+              id="switch-btn"
+              class="switch-btn"
+              aria-label="Cambiar dirección"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="17 1 21 5 17 9"></polyline>
+                <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                <polyline points="7 23 3 19 7 15"></polyline>
+                <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="input-group">
+            <div class="label">
+              <span id="output-icon">🔢</span>
+              <span id="output-label">Total en Bs</span>
+            </div>
+            <div class="result-box">
+              <span id="result-value" class="result-value">Bs.S 446,80</span>
+            </div>
+          </div>
+
+          <div class="info-box">
+            <button
+              id="toggle-rate-btn"
+              class="toggle-rate-btn"
+              aria-label="Cambiar a tasa anterior"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <div class="info-content">
+              <div class="info-row">
+                <span id="rate-icon">📈</span>
+                <span id="current-rate-text">Tasa actual: {{ dolar }}</span>
+              </div>
+              <div class="info-row" style="font-size: 0.75rem">
+                <span>🕒</span>
+                <span id="current-date-text">{{ fecha_bcv }}</span>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
+    </main>
 
-        <div class="info-box">
-          <div class="info-row">
-            <span>📈</span>
-            <span id="current-rate-text">Tasa actual: {{ dolar }}</span>
-          </div>
-          <div class="info-row" style="font-size: 0.75rem">
-            <span>🕒</span> <span id="current-date-text">{{ fecha_bcv }}</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- JS -->
-  <script>
-    window.INITIAL_RATES = {
-      dolar: {{ dolar }},
-      euro: {{ euro }},
-      usdt: {{ usdt }},
-      fecha_bcv: "{{ fecha_bcv }}",
-      fecha_usdt: "{{ fecha_usdt }}"
-    };
-  </script>
-  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
-</body>
-
+    <!-- JS -->
+    <script>
+      window.INITIAL_RATES = {
+        dolar: {{ dolar }},
+        euro: {{ euro }},
+        usdt: {{ usdt }},
+        fecha_bcv: "{{ fecha_bcv }}",
+        fecha_usdt: "{{ fecha_usdt }}",
+        // Previous rates
+        dolar_ant: {{ dolar_ant }},
+        euro_ant: {{ euro_ant }},
+        usdt_ant: {{ usdt_ant }},
+        fecha_bcv_ant: "{{ fecha_bcv_ant }}",
+        fecha_usdt_ant: "{{ fecha_usdt_ant }}"
+      };
+    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
+  </body>
 </html>

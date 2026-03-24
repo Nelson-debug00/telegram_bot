@@ -1,14 +1,15 @@
 from flask import Flask, render_template, jsonify
 import threading
 import logica_bot
-from get_prices import get_dolar_prices
+from get_prices import get_dolar_prices, get_last_price
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
     dolar, euro, usdt, fecha_bcv, fecha_usdt = get_dolar_prices()
-    return render_template("index.html", dolar=dolar, euro=euro, usdt=usdt, fecha_bcv=fecha_bcv, fecha_usdt=fecha_usdt)
+    dolar_ant, euro_ant, usdt_ant, fecha_bcv_ant, fecha_usdt_ant = get_last_price()
+    return render_template("index.html", dolar=dolar, euro=euro, usdt=usdt, fecha_bcv=fecha_bcv, fecha_usdt=fecha_usdt, dolar_ant=dolar_ant, euro_ant=euro_ant, usdt_ant=usdt_ant, fecha_bcv_ant=fecha_bcv_ant, fecha_usdt_ant=fecha_usdt_ant)
 
 @app.route('/contacto')
 def contacto():

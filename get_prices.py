@@ -137,13 +137,13 @@ def get_last_price():
         tasa_usdt = db.query(PrecioUsdt).filter(PrecioUsdt.date < fecha_reciente_u).order_by(PrecioUsdt.date.desc()).first()
 
         # Evitar AttributeError si la base de datos está vacía
-        val_dolar = tasa_dolar.value if tasa_dolar else 0.0
-        val_euro = tasa_euro.value if tasa_euro else 0.0
-        val_usdt = tasa_usdt.value if tasa_usdt else 0.0
+        dolar_ant = tasa_dolar.value if tasa_dolar else 0.0
+        euro_ant = tasa_euro.value if tasa_euro else 0.0
+        usdt_ant = tasa_usdt.value if tasa_usdt else 0.0
         
         fecha_bcv_ant = tasa_dolar.date
         fecha_usdt_ant = tasa_usdt.date
-        return val_dolar, val_euro, val_usdt, fecha_bcv_ant, fecha_usdt_ant
+        return dolar_ant, euro_ant, usdt_ant, fecha_bcv_ant, fecha_usdt_ant
         
     except Exception as e:
         print(f"Error al obtener el último precio: {e}")

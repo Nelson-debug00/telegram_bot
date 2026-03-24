@@ -3,7 +3,7 @@ from get_prices import get_dolar_prices, get_last_price
 # --- Calculadoras de Tasa Actual ---
 
 def calculadora_bs_eur_usd_usdt(message):
-    from main import bot
+    from logica_bot import bot
     try:
         dolar, euro, usdt, _, _ = get_dolar_prices()
         if dolar == 0 or euro == 0 or usdt == 0:
@@ -20,7 +20,7 @@ def calculadora_bs_eur_usd_usdt(message):
         bot.reply_to(message, f"❌ Error interno: {e}")
 
 def calculadora_eur_bs(message):
-    from main import bot
+    from logica_bot import bot
     try:
         _, euro, _, _, _ = get_dolar_prices()
         amount = float(message.text)
@@ -32,7 +32,7 @@ def calculadora_eur_bs(message):
         bot.reply_to(message, f"❌ Error interno: {e}")
 
 def calculadora_usd_bs(message):
-    from main import bot
+    from logica_bot import bot
     try:
         dolar, _, _, _, _ = get_dolar_prices()
         amount = float(message.text)
@@ -44,7 +44,7 @@ def calculadora_usd_bs(message):
         bot.reply_to(message, f"❌ Error interno: {e}")
 
 def calculadora_usdt_bs(message):
-    from main import bot
+    from logica_bot import bot
     try:
         _, _, usdt, _, _ = get_dolar_prices()
         amount = float(message.text)
@@ -58,7 +58,7 @@ def calculadora_usdt_bs(message):
 # --- Calculadoras de Tasa Anterior ---
 
 def calculadora_bs_eur_usd_usdt_ant(message):
-    from main import bot
+    from logica_bot import bot
     try:
         val_dolar, val_euro, val_usdt, _, _ = get_last_price()
         if val_dolar == 0 or val_euro == 0 or val_usdt == 0:
@@ -76,7 +76,7 @@ def calculadora_bs_eur_usd_usdt_ant(message):
         bot.reply_to(message, f"❌ Error interno: {e}")
 
 def calculadora_eur_bs_ant(message):
-    from main import bot
+    from logica_bot import bot
     try:
         _, val_euro, _, _, _ = get_last_price()
         
@@ -89,7 +89,7 @@ def calculadora_eur_bs_ant(message):
         bot.reply_to(message, f"❌ Error interno: {e}")
 
 def calculadora_usd_bs_ant(message):
-    from main import bot
+    from logica_bot import bot
     try:
         val_dolar, _, _, _, _ = get_last_price()
 
@@ -102,7 +102,7 @@ def calculadora_usd_bs_ant(message):
         bot.reply_to(message, f"❌ Error interno: {e}")
 
 def calculadora_usdt_bs_ant(message):
-    from main import bot
+    from logica_bot import bot
     try:
         _, _, val_usdt, _, _ = get_last_price()
 

@@ -95,22 +95,32 @@ def get_dolar_prices():
     try:
         fecha_limite = (datetime.now() - timedelta(days=10)).strftime("%Y-%m-%d")
 
+        # Limpieza de registros antiguos
         db.query(PrecioDolar).filter(PrecioDolar.date < fecha_limite).delete()
         db.query(PrecioEuro).filter(PrecioEuro.date < fecha_limite).delete()
         db.query(PrecioUsdt).filter(PrecioUsdt.date < fecha_limite).delete()
         
-        # Creamos los registros para cada moneda si el valor es mayor a 0
+        # 1. Dólar y Euro: Guardamos solo si la fecha NO existe (evita error UNIQUE)
         if dolar > 0:
-            db.add(PrecioDolar(value=dolar, date=fecha_bcv_db))
+            if not db.query(PrecioDolar).filter(PrecioDolar.date == fecha_bcv_db).first():
+                db.add(PrecioDolar(value=dolar, date=fecha_bcv_db))
+        
         if euro > 0:
-            db.add(PrecioEuro(value=euro, date=fecha_bcv_db))
+            if not db.query(PrecioEuro).filter(PrecioEuro.date == fecha_bcv_db).first():
+                db.add(PrecioEuro(value=euro, date=fecha_bcv_db))
+
+        # 2. USDT: Corregimos fecha en fin de semana y actualizamos si el precio cambia
         if usdt > 0:
-            db.add(PrecioUsdt(value=usdt, date=fecha_usdt_db))
+            registro_usdt = db.query(PrecioUsdt).filter(PrecioUsdt.date == fecha_usdt_db).first()
+            if not registro_usdt:
+                db.add(PrecioUsdt(value=usdt, date=fecha_usdt_db))
+            elif registro_usdt.value != usdt:
+                registro_usdt.value = usdt # Actualizamos si varió el mismo día
         
         db.commit()
-        print("💾 Precios guardados en la base de datos.")
+        print("💾 Datos procesados correctamente en la BD.")
     except Exception as e:
-        db.rollback() # Si hay error, deshacemos cambios
+        db.rollback()
         print(f"⚠️ Error al guardar en BD: {e}")
     finally:
         db.close()

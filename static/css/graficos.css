@@ -37,7 +37,7 @@
 }
 .back-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(25, 195, 189, 0.3);
+  box-shadow: 0 10px 20px rgba(237, 240, 240, 0.3);
   filter: brightness(1.1);
 }
 

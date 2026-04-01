@@ -26,6 +26,11 @@ def api_rates():
         'fecha_usdt': fecha_usdt
     })
 
+@app.route('/graficos')
+def graficos():
+    history = get_history_prices(7)
+    return render_template("graficos.html", history=history)
+
 def run_bot():
     try:
         print("Iniciando polling del bot...")

@@ -26,7 +26,7 @@
   margin-top: 30px;
 }
 .back-btn {
-  background: var(--accent-teal);
+  background:linear-gradient(135deg, hsl(230, 70%, 30%) 0%, #000000 100%);
   color: var(--bg-dark);
   padding: 12px 30px;
   border-radius: 12px;

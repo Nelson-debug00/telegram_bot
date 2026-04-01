@@ -159,3 +159,28 @@ def get_last_price():
         print(f"Error al obtener el último precio: {e}")
     finally:
         db.close()
+
+def get_history_prices(days=7):
+    db = SessionLocal()
+    try:
+        # Consultar los últimos registros
+        dolar_hist = db.query(PrecioDolar).order_by(PrecioDolar.date.desc()).limit(days).all()
+        euro_hist = db.query(PrecioEuro).order_by(PrecioEuro.date.desc()).limit(days).all()
+        usdt_hist = db.query(PrecioUsdt).order_by(PrecioUsdt.date.desc()).limit(days).all()
+
+        dolar_hist.reverse()
+        euro_hist.reverse()
+        usdt_hist.reverse()
+
+        data = {
+            "labels": [d.date.strftime("%d/%m") for d in dolar_hist],
+            "dolar": [round(d.value, 2) for d in dolar_hist],
+            "euro": [round(e.value, 2) for e in euro_hist],
+            "usdt": [round(u.value, 2) for u in usdt_hist]
+        }
+        return data
+    except Exception as e:
+        print(f"Error al obtener historial: {e}")
+        return {"labels": [], "dolar": [], "euro": [], "usdt": []}
+    finally:
+        db.close()

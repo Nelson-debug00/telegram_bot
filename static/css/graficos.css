@@ -2,6 +2,10 @@
   padding: 150px 20px 50px;
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .chart-header {
@@ -45,6 +49,7 @@
   padding: 25px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease, border-color 0.3s ease;
+  width: 80%;
 }
 
 .glass-card:hover {
@@ -78,7 +83,7 @@
 
 .canvas-wrapper {
   position: relative;
-  height: 250px;
+  height: 800px;
   width: 100%;
 }
 

@@ -172,11 +172,20 @@ def get_history_prices(days=7):
         euro_hist.reverse()
         usdt_hist.reverse()
 
+        def format_fecha(fecha):
+            if isinstance(fecha, str):
+                try:
+                    return datetime.strptime(fecha, "%Y-%m-%d").strftime("%d/%m")
+                except:
+                    return fecha
+            return fecha.strftime("%d/%m")
+
+        # Extraer etiquetas y valores con seguridad
         data = {
-            "labels": [d.date.strftime("%d/%m") for d in dolar_hist],
-            "dolar": [round(d.value, 2) for d in dolar_hist],
-            "euro": [round(e.value, 2) for e in euro_hist],
-            "usdt": [round(u.value, 2) for u in usdt_hist]
+            "labels": [format_fecha(d.date) for d in dolar_hist] if dolar_hist else [],
+            "dolar": [round(d.value, 2) for d in dolar_hist] if dolar_hist else [],
+            "euro": [round(e.value, 2) for e in euro_hist] if euro_hist else [],
+            "usdt": [round(u.value, 2) for u in usdt_hist] if usdt_hist else []
         }
         return data
     except Exception as e:

@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 y: {
                     grid: { color: "rgba(255, 255, 255, 0.05)" },
                     ticks: { color: "#a1a1a1" },
+                    beginAtZero: false
                 },
             },
         },

@@ -1,15 +1,23 @@
 .graficos-main {
-  padding: 150px 20px 50px;
+  padding: 120px 20px 50px;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .graficos-main {
+    padding-top: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 
 .chart-header {
   text-align: center;
+  margin-bottom: 40px;
 }
 
 .chart-header h2 {
@@ -17,6 +25,16 @@
   font-weight: 800;
   color: var(--text-white);
   margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  .chart-header h2 {
+    font-size: 1.8rem;
+  }
+  .chart-header p {
+    font-size: 0.95rem;
+  }
 }
 
 .chart-header p {
@@ -27,13 +45,16 @@
 /* Grid de Gráficos */
 .charts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
+  width: 100%;
+  margin-bottom: 50px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .charts-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
 
@@ -47,7 +68,16 @@
   padding: 25px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease, border-color 0.3s ease;
-  width: 700px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 480px) {
+  .glass-card {
+    padding: 15px;
+    border-radius: 20px;
+  }
 }
 
 .glass-card:hover {
@@ -81,13 +111,27 @@
 
 .canvas-wrapper {
   position: relative;
-  height: 400px;
-  width: 650px;
+  height: 350px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .canvas-wrapper {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .canvas-wrapper {
+    height: 250px;
+  }
 }
 
 /* Botón Volver */
 .back-btn-container {
   text-align: center;
+  margin-top: auto;
+  padding-bottom: 40px;
 }
 
 .back-btn {
@@ -104,12 +148,10 @@
 }
 
 .back-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(237, 240, 240, 0.3);
-  filter: brightness(1.1);
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
   border-color: rgba(255, 255, 255, 0.3);
+  filter: brightness(1.1);
 }
 
 .back-btn:active {
@@ -118,4 +160,4 @@
 
 a.back-btn {
   color: white;
-}
+}

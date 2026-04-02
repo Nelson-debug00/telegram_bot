@@ -168,6 +168,8 @@ main {
 @media (max-width: 768px) {
   main {
     padding-top: 120px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
@@ -201,6 +203,12 @@ main {
   text-align: center;
   box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+}
+
+@media (max-width: 480px) {
+  .telegram-card-large {
+    padding: 30px 15px;
+  }
 }
 
 .card-header.centered {
@@ -318,6 +326,16 @@ main {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
+}
+
+@media (max-width: 480px) {
+  .small-info-card {
+    padding: 20px;
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .card-icon {

@@ -45,12 +45,13 @@
       <nav id="nav-menu">
         <a href="{{ url_for('index') }}">Inicio</a>
         <a href="{{ url_for('contacto') }}">Contacto</a>
-        <a
-          href="{{ url_for('graficos') }}"
-          style="color: var(--text-white); font-weight: 700"
-          >Gráficos</a
-        >
+        <a href="{{ url_for('graficos') }}">Gráficos</a>
       </nav>
+      <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
     </header>
 
     <main class="graficos-main">

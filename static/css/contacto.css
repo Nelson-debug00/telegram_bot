@@ -155,28 +155,29 @@ nav a:hover {
 
 /* Page Layout */
 main {
-  padding-top: 140px;
-  padding-bottom: 50px;
-  max-width: 1200px;
+  padding: 120px 5% 50px;
+  max-width: 1400px;
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 3rem;
 }
 
 @media (max-width: 768px) {
   main {
-    padding-top: 120px;
+    padding-top: 100px;
+    gap: 2rem;
   }
 }
 
 .contact-container {
   width: 100%;
-  max-width: 900px;
+  max-width: 1000px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 3rem;
 }
 
 .calc-card {
@@ -185,105 +186,81 @@ main {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
-  padding: 40px;
+  padding: clamp(1.5rem, 5vw, 3rem);
   width: 100%;
-  max-width: 1000px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-  text-align: center;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
 }
-
 
 /* Telegram Card Large */
 .telegram-card-large {
-  padding: 60px;
-  text-align: center;
+  padding: clamp(2rem, 8vw, 4rem);
   box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
 }
 
 .card-header.centered {
+  display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-bottom: 40px;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  width: 100%;
 }
 
 .bot-logo-img {
-  width: 120px;
-  height: 120px;
+  width: clamp(80px, 15vw, 120px);
+  height: clamp(80px, 15vw, 120px);
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #0088cc;
   filter: drop-shadow(0 0 15px rgba(0, 136, 204, 0.4));
-  margin-bottom: 10px;
 }
 
 .header-text-large h2 {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
   font-weight: 800;
-  margin-bottom: 10px;
-}
-
-@media (max-width: 768px) {
-  .header-text-large h2 {
-    font-size: 1.8rem;
-  }
-  
-  .bot-logo-img {
-    width: 100px;
-    height: 100px;
-  }
+  margin-bottom: 0.5rem;
 }
 
 .header-text-large p {
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
   color: var(--accent-teal);
   letter-spacing: 1px;
 }
 
-@media (max-width: 768px) {
-  .header-text-large p {
-    font-size: 0.9rem;
-  }
-}
-
 .description-text {
-  font-size: 1.1rem;
-  margin-bottom: 40px;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+  margin-bottom: 2.5rem;
   line-height: 1.8;
   color: var(--text-gray);
-  max-width: 600px;
+  max-width: 650px;
   margin-left: auto;
   margin-right: auto;
-}
-
-@media (max-width: 768px) {
-  .description-text {
-    font-size: 0.95rem;
-    margin-bottom: 30px;
-    padding: 0 10px;
-  }
 }
 
 .action-btn-large {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
-  padding: 20px 40px;
+  gap: 1rem;
+  padding: 1.25rem 2.5rem;
   border-radius: 16px;
   text-decoration: none;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 3vw, 1.2rem);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  width: auto;
+  max-width: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .action-btn-large {
-    padding: 15px 30px;
-    font-size: 1rem;
     width: 100%;
+    padding: 1rem;
   }
 }
 
@@ -307,17 +284,27 @@ main {
 /* Info Row Grid */
 .info-row-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+  gap: 2rem;
+  width: 100%;
 }
 
 .small-info-card {
-  padding: 30px;
+  padding: 2rem;
   display: flex;
-  gap: 25px;
+  gap: 1.5rem;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
+  align-items: flex-start;
+}
+
+@media (max-width: 500px) {
+  .small-info-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .card-icon {
@@ -346,15 +333,19 @@ main {
   border: 1px solid rgba(25, 195, 189, 0.3);
 }
 
+.card-info {
+  flex: 1;
+}
+
 .card-info h3 {
   font-size: 1.2rem;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 
 .card-info p {
   color: var(--text-gray);
   font-size: 0.9rem;
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
 }
 
 .outline-link {
@@ -362,11 +353,15 @@ main {
   text-decoration: none;
   font-weight: 600;
   border: 1px solid var(--accent-blue);
-  padding: 10px 20px;
+  padding: 0.75rem 1.5rem;
   border-radius: 10px;
   display: inline-block;
   font-size: 0.9rem;
   transition: all 0.3s;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .outline-link:hover {
@@ -378,37 +373,38 @@ main {
   list-style: none;
   font-size: 0.9rem;
   color: var(--text-gray);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .schedule-list li {
-  margin-bottom: 8px;
   display: flex;
   align-items: center;
+  gap: 0.75rem;
+}
+
+@media (max-width: 500px) {
+  .schedule-list li {
+    justify-content: center;
+  }
 }
 
 .check {
   color: #10b981;
   font-weight: bold;
-  margin-right: 10px;
 }
 
 .cross {
   color: #ef4444;
   font-weight: bold;
-  margin-right: 10px;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .info-row-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .telegram-card-large {
-    padding: 40px 20px;
-  }
-
-  .header-text-large h2 {
-    font-size: 2rem;
-  }
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
+
+.main-contact { animation: fadeInUp 0.8s ease-out forwards; }
+.secondary-info { animation: fadeInUp 0.8s ease-out 0.2s forwards; opacity: 0; }

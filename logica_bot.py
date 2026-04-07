@@ -1,9 +1,17 @@
+import os
 import telebot
 from telebot import types
+from dotenv import load_dotenv
 from get_prices import get_dolar_prices, get_last_price
 from services.calculadoras import *
 
-bot = telebot.TeleBot("8771699547:AAGn8zTo6cp4qgGRxYeLelLp-R7NHNUU18g", parse_mode=None)
+load_dotenv()
+
+bot_token = os.getenv("TELEGRAM_TOKEN")
+if not bot_token:
+    raise ValueError("❌ Error: La variable de entorno TELEGRAM_TOKEN no está configurada.")
+
+bot = telebot.TeleBot(bot_token, parse_mode=None)
 
 # Registrar comandos en el menú azul de Telegram (Discoverability)
 bot.set_my_commands([

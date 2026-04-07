@@ -1,0 +1,25 @@
+# Entorno y variables sensibles
+.env
+env/
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Bases de datos 
+*.db
+*.sqlite3
+
+# Artefactos temporales y logs
+*.log
+md_files.txt
+
+# VS Code / Editores
+.vscode/
+.idea/
+*.swp
+*.bak
+

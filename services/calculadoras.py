@@ -1,5 +1,8 @@
 from get_prices import get_dolar_prices, get_last_price
 
+def limpiar_monto(texto):
+    return texto.replace('$', '').replace('€', '').replace('Bs', '').lower().replace('usdt', '').replace(',', '.').strip()
+
 # --- Calculadoras de Tasa Actual ---
 
 def calculadora_bs_eur_usd_usdt(message):
@@ -9,7 +12,8 @@ def calculadora_bs_eur_usd_usdt(message):
         if dolar == 0 or euro == 0 or usdt == 0:
             bot.reply_to(message, "⚠️ No se pueden realizar cálculos porque uno de los precios no está disponible (es 0).")
             return
-        amount = float(message.text)
+        monto_limpio = limpiar_monto(message.text)
+        amount = float(monto_limpio)
         dolar = amount / dolar
         euro = amount / euro
         usdt = amount / usdt
@@ -23,7 +27,8 @@ def calculadora_eur_bs(message):
     from logica_bot import bot
     try:
         _, euro, _, _, _ = get_dolar_prices()
-        amount = float(message.text)
+        monto_limpio = limpiar_monto(message.text)
+        amount = float(monto_limpio)
         euro = amount * euro
         bot.reply_to(message, f"{amount} EUR son:\n{euro:.2f} Bs")
     except ValueError: 
@@ -35,7 +40,8 @@ def calculadora_usd_bs(message):
     from logica_bot import bot
     try:
         dolar, _, _, _, _ = get_dolar_prices()
-        amount = float(message.text)
+        monto_limpio = limpiar_monto(message.text)
+        amount = float(monto_limpio)
         dolar = amount * dolar
         bot.reply_to(message, f"{amount} USD son:\n{dolar:.2f} Bs")
     except ValueError: 
@@ -47,7 +53,8 @@ def calculadora_usdt_bs(message):
     from logica_bot import bot
     try:
         _, _, usdt, _, _ = get_dolar_prices()
-        amount = float(message.text)
+        monto_limpio = limpiar_monto(message.text)
+        amount = float(monto_limpio)
         usdt = amount * usdt
         bot.reply_to(message, f"{amount} USDT son:\n{usdt:.2f} Bs")
     except ValueError: 
@@ -65,7 +72,8 @@ def calculadora_bs_eur_usd_usdt_ant(message):
             bot.reply_to(message, "⚠️ No se pueden realizar cálculos porque uno de los precios no está disponible (es 0).")
             return
         
-        amount = float(message.text)
+        monto_limpio = limpiar_monto(message.text)
+        amount = float(monto_limpio)
         dolar = amount / val_dolar
         euro = amount / val_euro
         usdt = amount / val_usdt
@@ -80,7 +88,8 @@ def calculadora_eur_bs_ant(message):
     try:
         _, val_euro, _, _, _ = get_last_price()
         
-        amount = float(message.text)
+        monto_limpio = limpiar_monto(message.text)
+        amount = float(monto_limpio)
         euro = amount * val_euro
         bot.reply_to(message, f"{amount} EUR son:\n{euro:.2f} Bs")
     except ValueError: 
@@ -93,7 +102,8 @@ def calculadora_usd_bs_ant(message):
     try:
         val_dolar, _, _, _, _ = get_last_price()
 
-        amount = float(message.text)
+        monto_limpio = limpiar_monto(message.text)
+        amount = float(monto_limpio)
         dolar = amount * val_dolar
         bot.reply_to(message, f"{amount} USD son:\n{dolar:.2f} Bs")
     except ValueError: 
@@ -106,7 +116,8 @@ def calculadora_usdt_bs_ant(message):
     try:
         _, _, val_usdt, _, _ = get_last_price()
 
-        amount = float(message.text)
+        monto_limpio = limpiar_monto(message.text)
+        amount = float(monto_limpio)
         usdt = amount * val_usdt
         bot.reply_to(message, f"{amount} USDT son:\n{usdt:.2f} Bs")
     except ValueError: 

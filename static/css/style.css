@@ -184,15 +184,53 @@ main {
 }
 
 .hero-section h1 {
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: 800;
   line-height: 1.1;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {
   .hero-section h1 {
     font-size: 2.5rem;
+  }
+}
+
+.source-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(25, 195, 189, 0.08);
+  border: 1px solid var(--accent-teal);
+  border-radius: 100px;
+  padding: 6px 16px;
+  margin-bottom: 16px;
+  font-size: 0.8rem;
+  color: var(--accent-teal);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.badge-icon {
+  background: var(--accent-teal);
+  color: var(--bg-dark);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .source-badge {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto 16px;
   }
 }
 
@@ -235,6 +273,7 @@ main {
   padding: 40px;
   width: 100%;
   max-width: 600px;
+  max-height: 700px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
 }
 
@@ -429,6 +468,66 @@ main {
   justify-content: center;
   align-items: center;
   gap: 8px;
+}
+
+.cta-box {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.cta-btn--primary {
+  background: rgba(25, 195, 189, 0.12);
+  color: var(--accent-teal);
+  border: 1px solid rgba(25, 195, 189, 0.3);
+}
+
+.cta-btn--primary:hover {
+  background: rgba(25, 195, 189, 0.25);
+  transform: translateY(-2px);
+}
+
+.cta-btn--telegram {
+  background: rgba(38, 165, 227, 0.12);
+  color: #26a5e4;
+  border: 1px solid rgba(38, 165, 227, 0.3);
+}
+
+.cta-btn--telegram:hover {
+  background: rgba(38, 165, 227, 0.25);
+  transform: translateY(-2px);
+}
+
+.cta-btn--share {
+  background: rgba(255, 215, 0, 0.12);
+  color: #ffd700;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.cta-btn--share:hover {
+  background: rgba(255, 215, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+.cta-btn--share.copied {
+  background: #27ae60;
+  color: white;
+  border-color: #27ae60;
 }
 
 /* Base Responsive */

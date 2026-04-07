@@ -201,6 +201,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Share Rate Logic
+    const shareBtn = document.getElementById('share-rate-btn');
+    if (shareBtn) {
+        shareBtn.addEventListener('click', () => {
+            const rawValue = amountInput.value.replace(/\./g, '').replace(/,/g, '.');
+            const amount = parseFloat(rawValue) || 0;
+            const activeRates = isPreviousRate ? ratesPrev : rates;
+            const rate = activeRates[currentCurrency] || 0;
+            const symbol = currencySymbols[currentCurrency] || currentCurrency.toUpperCase();
+            
+            let result;
+            let resultText = '';
+            
+            if (isReverse) {
+                result = amount / rate;
+                resultText = `${amount} Bs son ${formatAmount(result)} ${symbol}`;
+            } else {
+                result = amount * rate;
+                resultText = `${amount} ${symbol} son ${formatAmount(result)} Bs`;
+            }
+
+            const shareMessage = `📈 *Dolar Actual VE*\n\n🔥 ${resultText}\n🏦 Tasa (${isPreviousRate ? 'Anterior' : 'Actual'}): ${formatAmount(rate)} Bs\n\n🔗 Consulta más en: ${window.location.origin}`;
+
+            navigator.clipboard.writeText(shareMessage).then(() => {
+                const originalText = shareBtn.textContent;
+                shareBtn.textContent = '✅ ¡Copiado!';
+                shareBtn.classList.add('copied');
+                
+                setTimeout(() => {
+                    shareBtn.textContent = originalText;
+                    shareBtn.classList.remove('copied');
+                }, 2000);
+            });
+        });
+    }
+
     // Initial formatting for the default value
     amountInput.value = formatInput(amountInput.value);
     setCurrentRateText();

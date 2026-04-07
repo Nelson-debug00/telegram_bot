@@ -17,9 +17,14 @@ __pycache__/
 *.log
 md_files.txt
 
+# Documentación y Configuración del Proyecto
+Documento de Contexto.docx
+flask_jinja_syntax.md
+CLAUDE.md
+.claude/
+
 # VS Code / Editores
 .vscode/
 .idea/
 *.swp
 *.bak
-

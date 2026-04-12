@@ -21,6 +21,9 @@ body {
   font-family: var(--font-main);
   line-height: 1.6;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* Header & Navbar */
@@ -169,7 +172,7 @@ main {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  min-height: 100vh;
+  flex: 1;
   gap: 50px;
 }
 
@@ -552,4 +555,22 @@ main {
   .calc-title {
     text-align: center;
   }
+}
+
+/* Footer Section */
+footer {
+  padding: 40px 20px;
+  text-align: center;
+  background: rgba(11, 15, 19, 0.8);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: auto;
+  width: 100%;
+}
+
+footer p {
+  color: var(--text-gray);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }

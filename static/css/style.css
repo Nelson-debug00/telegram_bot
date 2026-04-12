@@ -502,16 +502,16 @@ main {
   transform: translateY(-2px);
 }
 
-.cta-btn--telegram {
+/* .cta-btn--telegram {
   background: rgba(38, 165, 227, 0.12);
   color: #26a5e4;
   border: 1px solid rgba(38, 165, 227, 0.3);
-}
+} */
 
-.cta-btn--telegram:hover {
+/* .cta-btn--telegram:hover {
   background: rgba(38, 165, 227, 0.25);
   transform: translateY(-2px);
-}
+} */
 
 .cta-btn--share {
   background: rgba(255, 215, 0, 0.12);

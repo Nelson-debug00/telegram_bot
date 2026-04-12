@@ -517,6 +517,7 @@ main {
   background: rgba(255, 215, 0, 0.12);
   color: #ffd700;
   border: 1px solid rgba(255, 215, 0, 0.3);
+  padding-top: 10px;
 }
 
 .cta-btn--share:hover {

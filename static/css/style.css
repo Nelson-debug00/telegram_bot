@@ -561,7 +561,7 @@ main {
 footer {
   padding: 40px 20px;
   text-align: center;
-  background: rgba(11, 15, 19, 0.8);
+  background: transparent;
   backdrop-filter: blur(10px);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   margin-top: auto;

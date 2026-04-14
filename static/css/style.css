@@ -500,6 +500,7 @@ main {
   background: rgba(25, 195, 189, 0.12);
   color: var(--accent-teal);
   border: 1px solid rgba(25, 195, 189, 0.3);
+  margin-top: 25px;
 }
 
 .cta-btn--primary:hover {
@@ -511,6 +512,7 @@ main {
   background: rgba(38, 165, 227, 0.12);
   color: #26a5e4;
   border: 1px solid rgba(38, 165, 227, 0.3);
+  margin-top: 25px;
 }
 
 .cta-btn--telegram:hover {
@@ -554,6 +556,62 @@ main {
 
   .calc-title {
     text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .calc-card {
+    padding: 24px 16px;
+  }
+
+  .currency-toggle {
+    margin-bottom: 20px;
+  }
+
+  .toggle-btn {
+    padding: 10px 4px;
+    font-size: 0.8rem;
+  }
+
+  .currency-input {
+    padding: 16px;
+    font-size: 1.6rem;
+    margin-bottom: -15px;
+  }
+
+  .switch-btn {
+    margin: 10px;
+  }
+
+  .result-box {
+    padding: 16px;
+    white-space: normal;
+    word-break: break-all;
+  }
+
+  .result-value {
+    font-size: 1.5rem;
+  }
+
+  .info-box {
+    padding: 15px;
+    gap: 12px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cta-box {
+    gap: 12px;
+  }
+
+  .cta-btn {
+    width: 100%;
+    margin-top: 0 !important;
+    padding: 12px;
+  }
+  
+  .hero-section h1 {
+    font-size: 2.2rem;
   }
 }
 

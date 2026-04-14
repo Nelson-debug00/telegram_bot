@@ -168,12 +168,19 @@ nav a:hover {
 /* Main Content */
 main {
   padding-top: 120px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   flex: 1;
   gap: 50px;
+}
+
+@media (min-width: 1600px) {
+  main {
+    max-width: 1600px;
+    gap: 80px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -187,7 +194,7 @@ main {
 }
 
 .hero-section h1 {
-  font-size: 3.5rem;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 20px;
@@ -278,6 +285,19 @@ main {
   max-width: 600px;
   max-height: 700px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+}
+
+@media (min-width: 1400px) {
+  .calc-card {
+    max-width: 700px;
+    padding: 50px;
+  }
+  .currency-input {
+    font-size: 2.5rem;
+  }
+  .result-value {
+    font-size: 2.2rem;
+  }
 }
 
 .currency-toggle {
